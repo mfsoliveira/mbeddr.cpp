@@ -148,8 +148,14 @@
         <ref role="398BVh" node="6RmoJr9qF5L" resolve="platform.artifacts" />
       </node>
     </node>
+    <node concept="398rNT" id="16Blx1neS8f" role="1l3spd">
+      <property role="TrG5h" value="mps_home" />
+    </node>
     <node concept="398rNT" id="23LEVbRX3hP" role="1l3spd">
       <property role="TrG5h" value="mps.home" />
+      <node concept="398BVA" id="16Blx1neS8h" role="398pKh">
+        <ref role="398BVh" node="16Blx1neS8f" resolve="mps_home" />
+      </node>
     </node>
     <node concept="398rNT" id="4FIECQpNJnG" role="1l3spd">
       <property role="TrG5h" value="mbeddr.cpp" />

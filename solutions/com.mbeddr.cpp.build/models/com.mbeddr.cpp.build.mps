@@ -1392,8 +1392,14 @@
         </node>
       </node>
     </node>
+    <node concept="398rNT" id="41kuMHWAyD2" role="1l3spd">
+      <property role="TrG5h" value="mps_home" />
+    </node>
     <node concept="398rNT" id="23LEVbRX3hP" role="1l3spd">
       <property role="TrG5h" value="mps.home" />
+      <node concept="398BVA" id="41kuMHWAyDH" role="398pKh">
+        <ref role="398BVh" node="41kuMHWAyD2" resolve="mps_home" />
+      </node>
     </node>
     <node concept="398rNT" id="4FIECQpNJnG" role="1l3spd">
       <property role="TrG5h" value="mbeddr.cpp" />

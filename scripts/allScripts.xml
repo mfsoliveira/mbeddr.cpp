@@ -80,7 +80,7 @@
     <delete dir="${build.layout}" />
   </target>
   
-  <target name="compileJava" depends="java.compile.com.mbeddr.cpp.build" />
+  <target name="compileJava" depends="java.compile.com.mbeddr.cpp.build, java.compile.com.mbeddr.cpp.ts-tests.build, java.compile.com.mbeddr.cpp.ex-tests.build" />
   
   <target name="processResources" />
   
@@ -195,6 +195,8 @@
       <library file="${artifacts.mps}/languages/xml/jetbrains.mps.core.xml.jar" />
       <chunk>
         <module file="${mbeddr.cpp}/solutions/com.mbeddr.cpp.build/com.mbeddr.cpp.build.msd" />
+        <module file="${mbeddr.cpp}/solutions/com.mbeddr.cpp.ex-tests.build/com.mbeddr.cpp.ex-tests.build.msd" />
+        <module file="${mbeddr.cpp}/solutions/com.mbeddr.cpp.ts-tests.build/com.mbeddr.cpp.ts-tests.build.msd" />
       </chunk>
       <jvmargs>
         <arg value="-ea" />
@@ -231,7 +233,43 @@
     </javac>
   </target>
   
+  <target name="java.compile.com.mbeddr.cpp.ts-tests.build" depends="java.compile.com.mbeddr.cpp.build">
+    <mkdir dir="${mbeddr.cpp}/solutions/com.mbeddr.cpp.ts-tests.build/source_gen" />
+    <mkdir dir="${build.tmp}/java/out/com.mbeddr.cpp.ts-tests.build" />
+    <javac destdir="${build.tmp}/java/out/com.mbeddr.cpp.ts-tests.build" fork="true" encoding="utf8" includeantruntime="false" debug="true">
+      <compilerarg value="-Xlint:none" />
+      <src>
+        <path location="${mbeddr.cpp}/solutions/com.mbeddr.cpp.ts-tests.build/source_gen" />
+      </src>
+      <classpath>
+        <pathelement path="${build.tmp}/java/out/com.mbeddr.cpp.build" />
+        <fileset file="${artifacts.mbeddr}/mbeddr.build/languages/com.mbeddr.build/com.mbeddr.build.jar" />
+        <fileset file="${artifacts.com.mbeddr.platform}/com.mbeddr.platform.jar" />
+        <fileset file="${artifacts.com.mbeddr.platform}/de.itemis.mps.extensions.build/languages/de.itemis.mps.extensions.build/de.itemis.mps.extensions.build.jar" />
+      </classpath>
+    </javac>
+  </target>
+  
+  <target name="java.compile.com.mbeddr.cpp.ex-tests.build" depends="java.compile.com.mbeddr.cpp.build">
+    <mkdir dir="${mbeddr.cpp}/solutions/com.mbeddr.cpp.ex-tests.build/source_gen" />
+    <mkdir dir="${build.tmp}/java/out/com.mbeddr.cpp.ex-tests.build" />
+    <javac destdir="${build.tmp}/java/out/com.mbeddr.cpp.ex-tests.build" fork="true" encoding="utf8" includeantruntime="false" debug="true">
+      <compilerarg value="-Xlint:none" />
+      <src>
+        <path location="${mbeddr.cpp}/solutions/com.mbeddr.cpp.ex-tests.build/source_gen" />
+      </src>
+      <classpath>
+        <pathelement path="${build.tmp}/java/out/com.mbeddr.cpp.build" />
+        <fileset file="${artifacts.mbeddr}/mbeddr.build/languages/com.mbeddr.build/com.mbeddr.build.jar" />
+        <fileset file="${artifacts.com.mbeddr.platform}/com.mbeddr.platform.jar" />
+        <fileset file="${artifacts.com.mbeddr.platform}/de.itemis.mps.extensions.build/languages/de.itemis.mps.extensions.build/de.itemis.mps.extensions.build.jar" />
+      </classpath>
+    </javac>
+  </target>
+  
   <target name="cleanSources">
     <delete dir="${mbeddr.cpp}/solutions/com.mbeddr.cpp.build/source_gen" />
+    <delete dir="${mbeddr.cpp}/solutions/com.mbeddr.cpp.ex-tests.build/source_gen" />
+    <delete dir="${mbeddr.cpp}/solutions/com.mbeddr.cpp.ts-tests.build/source_gen" />
   </target>
 </project>

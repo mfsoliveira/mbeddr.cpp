@@ -15,22 +15,15 @@
     <import index="3d25" ref="r:b51ed3f8-f18c-4b51-8a93-f4ee7f6adf9a(com.mbeddr.cpp.expressions.structure)" />
     <import index="c4fa" ref="r:9f0e84b6-2ec7-4f9e-83e0-feedc77b63a3(com.mbeddr.core.statements.structure)" />
     <import index="mj1l" ref="r:c371cf98-dcc8-4a43-8eb8-8a8096de18b2(com.mbeddr.core.expressions.structure)" />
-    <import index="go54" ref="r:a7e7800a-15b6-4c02-ae4d-6b40a48c7370(com.mbeddr.core.statements.typesystem)" />
-    <import index="tpeh" ref="r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)" />
-    <import index="tpcu" ref="r:00000000-0000-4000-0000-011c89590282(jetbrains.mps.lang.core.behavior)" />
-    <import index="mhbf" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.model(MPS.OpenAPI/)" />
     <import index="kntn" ref="r:4090021e-0c8f-4cca-ab3f-590afb43a745(com.mbeddr.cpp.base.behavior)" />
-    <import index="p3tm" ref="r:7b158038-abbe-4e11-b171-d5a959b4e91a(com.mbeddr.core.modules.typesystem)" />
     <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" />
     <import index="qd6m" ref="r:c4c3f7d3-0acf-4671-a134-5fab66c4e637(com.mbeddr.core.modules.behavior)" />
-    <import index="rj8d" ref="r:da9fd96f-5c71-45ab-b2da-1aa6232ec67f(com.mbeddr.core.statements.behavior)" />
     <import index="yq40" ref="r:152b3fc0-83a1-4bab-a8cd-565eb8483785(com.mbeddr.core.pointers.structure)" />
     <import index="tpd5" ref="r:00000000-0000-4000-0000-011c895902b5(jetbrains.mps.lang.typesystem.dependencies)" />
-    <import index="n7pc" ref="r:1f4b6c73-0d50-4599-bc8a-9f6948adf243(com.mbeddr.core.expressions.typesystem)" />
     <import index="33ny" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)" />
+    <import index="ywuz" ref="r:c6ce92e7-5a98-4a6f-866a-ec8b9e945dd8(com.mbeddr.core.expressions.behavior)" />
     <import index="tpd4" ref="r:00000000-0000-4000-0000-011c895902b4(jetbrains.mps.lang.typesystem.structure)" implicit="true" />
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" implicit="true" />
-    <import index="ywuz" ref="r:c6ce92e7-5a98-4a6f-866a-ec8b9e945dd8(com.mbeddr.core.expressions.behavior)" implicit="true" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -169,6 +162,11 @@
       <concept id="1144231330558" name="jetbrains.mps.baseLanguage.structure.ForStatement" flags="nn" index="1Dw8fO">
         <child id="1144231399730" name="condition" index="1Dwp0S" />
         <child id="1144231408325" name="iteration" index="1Dwrff" />
+      </concept>
+      <concept id="1163668896201" name="jetbrains.mps.baseLanguage.structure.TernaryOperatorExpression" flags="nn" index="3K4zz7">
+        <child id="1163668914799" name="condition" index="3K4Cdx" />
+        <child id="1163668922816" name="ifTrue" index="3K4E3e" />
+        <child id="1163668934364" name="ifFalse" index="3K4GZi" />
       </concept>
       <concept id="5497648299878491908" name="jetbrains.mps.baseLanguage.structure.BaseVariableReference" flags="nn" index="1M0zk4">
         <reference id="5497648299878491909" name="baseVariableDeclaration" index="1M0zk5" />
@@ -6994,26 +6992,70 @@
       <node concept="3cpWs8" id="3J_5hL4mUoz" role="3cqZAp">
         <node concept="3cpWsn" id="3J_5hL4mUoA" role="3cpWs9">
           <property role="TrG5h" value="initParsed" />
-          <node concept="10Oyi0" id="3J_5hL4mUox" role="1tU5fm" />
-          <node concept="2YIFZM" id="3J_5hL4n5HJ" role="33vP2m">
-            <ref role="37wK5l" to="wyt6:~Integer.parseInt(java.lang.String)" resolve="parseInt" />
-            <ref role="1Pybhc" to="wyt6:~Integer" resolve="Integer" />
-            <node concept="2OqwBi" id="3J_5hL4nKBx" role="37wK5m">
-              <node concept="2OqwBi" id="3J_5hL4nIjj" role="2Oq$k0">
-                <node concept="2OqwBi" id="3J_5hL4nFCR" role="2Oq$k0">
-                  <node concept="1YBJjd" id="3J_5hL4nF4w" role="2Oq$k0">
-                    <ref role="1YBMHb" node="hYHfWv9gSc" resolve="vardec" />
-                  </node>
-                  <node concept="3TrEf2" id="3J_5hL4nGRw" role="2OqNvi">
-                    <ref role="3Tt5mk" to="x27k:2pPw_DEjkM9" resolve="init" />
-                  </node>
+          <node concept="10Oyi0" id="1pS$sow5y1E" role="1tU5fm" />
+          <node concept="3K4zz7" id="1pS$sow5y1F" role="33vP2m">
+            <node concept="2OqwBi" id="1pS$sow5y1G" role="3K4Cdx">
+              <node concept="2OqwBi" id="1pS$sow5y1H" role="2Oq$k0">
+                <node concept="1YBJjd" id="1pS$sow5y1I" role="2Oq$k0">
+                  <ref role="1YBMHb" node="hYHfWv9gSc" resolve="vardec" />
                 </node>
-                <node concept="2qgKlT" id="3J_5hL4nJ_m" role="2OqNvi">
-                  <ref role="37wK5l" to="ywuz:1VQvajLb13M" resolve="renderReadable" />
+                <node concept="3TrEf2" id="1pS$sow5y1J" role="2OqNvi">
+                  <ref role="3Tt5mk" to="x27k:2pPw_DEjkM9" resolve="init" />
                 </node>
               </node>
-              <node concept="liA8E" id="3J_5hL4nLQk" role="2OqNvi">
-                <ref role="37wK5l" to="wyt6:~String.trim()" resolve="trim" />
+              <node concept="1mIQ4w" id="1pS$sow5y1K" role="2OqNvi">
+                <node concept="chp4Y" id="1pS$sow5y1L" role="cj9EA">
+                  <ref role="cht4Q" to="mj1l:1spqZOskLyG" resolve="CharLiteral" />
+                </node>
+              </node>
+            </node>
+            <node concept="2OqwBi" id="1pS$sow5y1O" role="3K4E3e">
+              <node concept="2OqwBi" id="1pS$sow5y1P" role="2Oq$k0">
+                <node concept="1PxgMI" id="1pS$sow5y1Q" role="2Oq$k0">
+                  <property role="1BlNFB" value="false" />
+                  <node concept="2OqwBi" id="1pS$sow5y1R" role="1m5AlR">
+                    <node concept="1YBJjd" id="1pS$sow5y1S" role="2Oq$k0">
+                      <ref role="1YBMHb" node="hYHfWv9gSc" resolve="vardec" />
+                    </node>
+                    <node concept="3TrEf2" id="1pS$sow5y1T" role="2OqNvi">
+                      <ref role="3Tt5mk" to="x27k:2pPw_DEjkM9" resolve="init" />
+                    </node>
+                  </node>
+                  <node concept="chp4Y" id="1pS$sow5y1U" role="3oSUPX">
+                    <ref role="cht4Q" to="mj1l:1spqZOskLyG" resolve="CharLiteral" />
+                  </node>
+                </node>
+                <node concept="3TrcHB" id="1pS$sow5y1V" role="2OqNvi">
+                  <ref role="3TsBF5" to="mj1l:1spqZOskLyH" resolve="value" />
+                </node>
+              </node>
+              <node concept="liA8E" id="1pS$sow5y1W" role="2OqNvi">
+                <ref role="37wK5l" to="wyt6:~String.charAt(int)" resolve="charAt" />
+                <node concept="3cmrfG" id="1pS$sow5y1X" role="37wK5m">
+                  <property role="3cmrfH" value="0" />
+                </node>
+              </node>
+            </node>
+            <node concept="2YIFZM" id="1pS$sow5y1Y" role="3K4GZi">
+              <ref role="1Pybhc" to="wyt6:~Integer" resolve="Integer" />
+              <ref role="37wK5l" to="wyt6:~Integer.parseInt(java.lang.String)" resolve="parseInt" />
+              <node concept="2OqwBi" id="1pS$sow5y1Z" role="37wK5m">
+                <node concept="2OqwBi" id="1pS$sow5y20" role="2Oq$k0">
+                  <node concept="2OqwBi" id="1pS$sow5y21" role="2Oq$k0">
+                    <node concept="1YBJjd" id="1pS$sow5y22" role="2Oq$k0">
+                      <ref role="1YBMHb" node="hYHfWv9gSc" resolve="vardec" />
+                    </node>
+                    <node concept="3TrEf2" id="1pS$sow5y23" role="2OqNvi">
+                      <ref role="3Tt5mk" to="x27k:2pPw_DEjkM9" resolve="init" />
+                    </node>
+                  </node>
+                  <node concept="2qgKlT" id="1pS$sow5y24" role="2OqNvi">
+                    <ref role="37wK5l" to="ywuz:1VQvajLb13M" resolve="renderReadable" />
+                  </node>
+                </node>
+                <node concept="liA8E" id="1pS$sow5y25" role="2OqNvi">
+                  <ref role="37wK5l" to="wyt6:~String.trim()" resolve="trim" />
+                </node>
               </node>
             </node>
           </node>

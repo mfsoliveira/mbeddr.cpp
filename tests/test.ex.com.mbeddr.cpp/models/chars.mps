@@ -298,7 +298,7 @@
     </node>
     <node concept="lIfQi" id="29cSqvdU9N0" role="N3F5h">
       <property role="3HjyOP" value="true" />
-      <property role="TrG5h" value="NullPointerTests" />
+      <property role="TrG5h" value="CharTypes" />
       <node concept="3cM6IN" id="29cSqvdUdu5" role="lIfQt">
         <ref role="3cM6IK" node="29cSqvdUap8" resolve="Char16Test" />
       </node>

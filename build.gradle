@@ -81,6 +81,13 @@ task resolveAllLanguageLibs(type: Copy) {
 
 def mbeddrCppVersion = project.findProperty("mbeddrCppVersion") ?: '0.1'
 
+// GITHUB_REPOSITORY (owner/repo) is set automatically by GitHub Actions for every
+// workflow run, so this resolves to whichever repo the workflow is actually running
+// in -- a fork publishes/releases against itself, and the same config works
+// unmodified once merged upstream. Falls back to upstream for a plain local run
+// outside CI. Used by both the publishing{} and githubRelease{} blocks below.
+def ghRepository = (System.getenv("GITHUB_REPOSITORY") ?: "DSLFoundry/mbeddr.cpp").split("/", 2)
+
 // Default arguments for ant scripts
 def defaultScriptArgs = [
         'mps.home'                          : resolveMps.destinationDir,
@@ -400,11 +407,11 @@ task setup {
 def releaseArtifacts = ["${artifactsDir}/com.mbeddr.cpp/com.mbeddr.cpp-${mbeddrCppVersion}.zip"]
 
 githubRelease {
-    owner = 'DSLFoundry'
-    repo = 'mbeddr.cpp'
+    owner = ghRepository[0]
+    repo = ghRepository[1]
     token =  providers.environmentVariable("GITHUB_TOKEN").getOrElse("empty")
     tagName =  "v-$mbeddrCppVersion"
-    targetCommitish = providers.environmentVariable("CI_COMMIT_SHA").getOrElse("master")
+    targetCommitish = providers.environmentVariable("CI_COMMIT_SHA").getOrElse("main")
     releaseName =  "mbeddr C++ Extensions v$mbeddrCppVersion"
     releaseAssets = releaseArtifacts
     // body = ReleaseNotes.getReleaseNotes(file("RELEASE_NOTES.md"))
@@ -414,12 +421,7 @@ publishing {
     repositories {
         maven {
             name = "GitHubPackages"
-            // GITHUB_REPOSITORY (owner/repo) is set automatically by GitHub Actions
-            // for every workflow run, so this resolves to whichever repo the workflow
-            // is actually running in -- a fork publishes to its own package registry,
-            // and the same file works unmodified once merged upstream. Falls back to
-            // upstream for a plain local `./gradlew publish` run outside CI.
-            url = uri("https://maven.pkg.github.com/${System.getenv("GITHUB_REPOSITORY") ?: "DSLFoundry/mbeddr.cpp"}")
+            url = uri("https://maven.pkg.github.com/${ghRepository[0]}/${ghRepository[1]}")
             credentials {
                 username = project.findProperty("gpr.user") ?: System.getenv("GITHUB_ACTOR")
                 password = project.findProperty("gpr.key") ?: System.getenv("GITHUB_TOKEN")

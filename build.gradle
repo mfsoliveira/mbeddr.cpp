@@ -414,7 +414,12 @@ publishing {
     repositories {
         maven {
             name = "GitHubPackages"
-            url = uri("https://maven.pkg.github.com/DSLFoundry/mbeddr.cpp")
+            // GITHUB_REPOSITORY (owner/repo) is set automatically by GitHub Actions
+            // for every workflow run, so this resolves to whichever repo the workflow
+            // is actually running in -- a fork publishes to its own package registry,
+            // and the same file works unmodified once merged upstream. Falls back to
+            // upstream for a plain local `./gradlew publish` run outside CI.
+            url = uri("https://maven.pkg.github.com/${System.getenv("GITHUB_REPOSITORY") ?: "DSLFoundry/mbeddr.cpp"}")
             credentials {
                 username = project.findProperty("gpr.user") ?: System.getenv("GITHUB_ACTOR")
                 password = project.findProperty("gpr.key") ?: System.getenv("GITHUB_TOKEN")

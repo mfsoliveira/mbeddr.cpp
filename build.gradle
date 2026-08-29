@@ -81,6 +81,19 @@ task resolveAllLanguageLibs(type: Copy) {
 
 def mbeddrCppVersion = project.findProperty("mbeddrCppVersion") ?: '0.1'
 
+// publish/githubRelease currently run on every push to main (there's no separate
+// release-branch/tag process yet), so mbeddrCppVersion alone isn't unique per run --
+// republishing the same version to an immutable Maven registry, or recreating the
+// same GitHub Release, both fail on the second push (409/422). Append the CI run
+// number and short commit SHA -- GitHub Actions' equivalent of a build counter plus
+// git SHA, the same scheme iets3.core uses -- so every CI-triggered publish/release
+// gets a genuinely unique version. A plain local build (no GITHUB_RUN_NUMBER) keeps
+// the bare base version. Only used for the published/released version identifier,
+// not for mbeddrCppVersion itself, which still names the actual build artifact.
+def publishVersion = System.getenv("GITHUB_RUN_NUMBER") ?
+        "${mbeddrCppVersion}.${System.getenv('GITHUB_RUN_NUMBER')}.${(System.getenv('GITHUB_SHA') ?: '').take(7)}" :
+        mbeddrCppVersion
+
 // GITHUB_REPOSITORY (owner/repo) is set automatically by GitHub Actions for every
 // workflow run, so this resolves to whichever repo the workflow is actually running
 // in -- a fork publishes/releases against itself, and the same config works
@@ -410,9 +423,9 @@ githubRelease {
     owner = ghRepository[0]
     repo = ghRepository[1]
     token =  providers.environmentVariable("GITHUB_TOKEN").getOrElse("empty")
-    tagName =  "v-$mbeddrCppVersion"
+    tagName =  "v-$publishVersion"
     targetCommitish = providers.environmentVariable("CI_COMMIT_SHA").getOrElse("main")
-    releaseName =  "mbeddr C++ Extensions v$mbeddrCppVersion"
+    releaseName =  "mbeddr C++ Extensions v$publishVersion"
     releaseAssets = releaseArtifacts
     // body = ReleaseNotes.getReleaseNotes(file("RELEASE_NOTES.md"))
 }
@@ -433,7 +446,7 @@ publishing {
         gpr(MavenPublication) {
             groupId = 'com.mbeddr'
             artifactId = 'cpp'
-            version = "$mbeddrCppVersion"
+            version = "$publishVersion"
             
             artifacts = releaseArtifacts
             pom {

@@ -196,7 +196,7 @@
         <property role="hL25V" value="true" />
         <property role="TrG5h" value="SomeClass" />
         <property role="1wg9_F" value="public" />
-        <ref role="2gom41" node="4lmr4L5g4Fy" resolve="SomeClass" />
+        <ref role="2gom41" node="4lmr4L5g4Fy" resolve="BaseClass" />
         <node concept="3XIRFW" id="4KmUErP6L6r" role="1IVm9U" />
         <node concept="2dFNQU" id="4KmUErP6L6s" role="2C2TGm">
           <property role="2c7vTL" value="false" />
@@ -214,7 +214,7 @@
       <property role="226hDV" value="false" />
       <node concept="FysoC" id="4lmr4L5n2Og" role="Fysvh">
         <property role="FysoG" value="2Ai0Gt9ODIs/public" />
-        <ref role="FysoF" node="4lmr4L5g4Fy" resolve="SomeClass" />
+        <ref role="FysoF" node="4lmr4L5g4Fy" resolve="BaseClass" />
       </node>
     </node>
     <node concept="2NXPZ9" id="4lmr4L5swKl" role="N3F5h">
@@ -226,7 +226,7 @@
       <property role="TrG5h" value="ThirdClass" />
       <node concept="FysoC" id="4lmr4L5sx1G" role="Fysvh">
         <property role="FysoG" value="2Ai0Gt9ODIs/public" />
-        <ref role="FysoF" node="4lmr4L5g4Fy" resolve="SomeClass" />
+        <ref role="FysoF" node="4lmr4L5g4Fy" resolve="BaseClass" />
       </node>
     </node>
     <node concept="2NXPZ9" id="4lmr4L5g4Hx" role="N3F5h">
@@ -267,7 +267,7 @@
             <node concept="3mBfEi" id="4lmr4L5$z_5" role="2umbIo">
               <property role="2caQfQ" value="false" />
               <property role="2c7vTL" value="false" />
-              <ref role="3mBfEM" node="4lmr4L5g4Fy" resolve="SomeClass" />
+              <ref role="3mBfEM" node="4lmr4L5g4Fy" resolve="BaseClass" />
             </node>
           </node>
           <node concept="0vAa7" id="4lmr4L5$z_6" role="3XIe9u">
@@ -277,11 +277,11 @@
               <node concept="3mBfEi" id="2w1tz7c4c8f" role="2umbIo">
                 <property role="2caQfQ" value="false" />
                 <property role="2c7vTL" value="false" />
-                <ref role="3mBfEM" node="4lmr4L5g4Fy" resolve="SomeClass" />
+                <ref role="3mBfEM" node="4lmr4L5g4Fy" resolve="BaseClass" />
               </node>
             </node>
             <node concept="3ZVu4v" id="2w1tz7c4cb2" role="O_qFe">
-              <ref role="3ZVs_2" node="4lmr4L5$z$T" resolve="other_class" />
+              <ref role="3ZVs_2" node="4lmr4L5$z$T" resolve="other" />
             </node>
           </node>
         </node>
@@ -295,7 +295,7 @@
           <node concept="25Bbzn" id="3J_5hL5uQW5" role="3XIe9u">
             <node concept="3IbwUb" id="3J_5hL5uR54" role="3TlMhJ" />
             <node concept="3ZVu4v" id="3J_5hL5uQPG" role="3TlMhI">
-              <ref role="3ZVs_2" node="4lmr4L5$z_3" resolve="some_class" />
+              <ref role="3ZVs_2" node="4lmr4L5$z_3" resolve="some" />
             </node>
           </node>
         </node>
@@ -359,7 +359,7 @@
               </node>
             </node>
             <node concept="3ZVu4v" id="2w1tz7c4wFk" role="O_qFe">
-              <ref role="3ZVs_2" node="4lmr4L5sx31" resolve="third_class" />
+              <ref role="3ZVs_2" node="4lmr4L5sx31" resolve="base" />
             </node>
           </node>
         </node>
@@ -399,7 +399,7 @@
           <node concept="25Bbzn" id="3J_5hL5uRIk" role="3XIe9u">
             <node concept="3IbwUb" id="3J_5hL5uRMw" role="3TlMhJ" />
             <node concept="3ZVu4v" id="3J_5hL5uRr4" role="3TlMhI">
-              <ref role="3ZVs_2" node="4lmr4L5g4Jt" resolve="other_class" />
+              <ref role="3ZVs_2" node="4lmr4L5g4Jt" resolve="third" />
             </node>
           </node>
         </node>
@@ -426,7 +426,7 @@
         <node concept="2N2KuS" id="1pS$sow1hm6" role="3XIRFZ">
           <node concept="3TlMhK" id="1pS$sow1hm7" role="2N2GHh" />
           <node concept="3ZVu4v" id="1pS$sow1hm8" role="2N2GHg">
-            <ref role="3ZVs_2" node="1pS$sow1hm1" resolve="assertion" />
+            <ref role="3ZVs_2" node="1pS$sow1hm1" resolve="assertion2" />
           </node>
         </node>
       </node>
@@ -483,7 +483,7 @@
               </node>
             </node>
             <node concept="3ZVu4v" id="2w1tz7c4wKn" role="O_qFe">
-              <ref role="3ZVs_2" node="4lmr4L5$$aN" resolve="third_class" />
+              <ref role="3ZVs_2" node="4lmr4L5$$aN" resolve="third" />
             </node>
           </node>
         </node>
@@ -561,7 +561,7 @@
               </node>
             </node>
             <node concept="3ZVu4v" id="2w1tz7c4x7g" role="O_qFe">
-              <ref role="3ZVs_2" node="4lmr4L5$$iP" resolve="third_class" />
+              <ref role="3ZVs_2" node="4lmr4L5$$iP" resolve="third" />
             </node>
           </node>
         </node>

@@ -88,6 +88,7 @@
     <module reference="8c081446-e4ba-48b7-a7e0-3db40e2c3439(com.mbeddr.cpp.base)" version="0" />
     <module reference="2e15e1a4-8998-4f06-86b2-8d184a179e8e(com.mbeddr.cpp.exceptions)" version="0" />
     <module reference="b341759a-c721-4072-90cf-328bb2724684(com.mbeddr.cpp.expressions)" version="0" />
+    <module reference="7308c66b-3b31-4952-bf56-0f3405fab5be(com.mbeddr.cpp.operator_overload)" version="0" />
     <module reference="5e6018dc-dc26-4070-9526-663fdbfe4c10(com.mbeddr.cpp.templates)" version="0" />
     <module reference="63e0e566-5131-447e-90e3-12ea330e1a00(com.mbeddr.mpsutil.blutil)" version="0" />
     <module reference="a482b416-d0c9-473f-8f67-725ed642b3f3(com.mbeddr.mpsutil.breadcrumb)" version="0" />
